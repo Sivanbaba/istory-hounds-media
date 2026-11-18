@@ -102,6 +102,8 @@ Clips are posted automatically, with no preview step for Sivan. Don't send post 
   yt-dlp -q -f b -o k.mp4 https://www.twitch.tv/<login>/clip/<slug> </dev/null
   ```
   Use `</dev/null` and `ffmpeg -nostdin` inside loops.
+- `tools/find_kick.py [channels…]` lists today's GTA VI clips from Kick: Adin Ross, N3on and xQc all stream GTA 6 there. Download with `yt-dlp -q -o k.mp4 https://kick.com/<ch>/clips/<clip_id>`. It works from the cloud as of 18 Nov.
+- YouTube downloads are blocked from the cloud ("Sign in to confirm you're not a bot"), so IShowSpeed and other YouTube-only streamers can't be clipped without cookies.
 - `tools/sheet.sh` builds the reviewer sheets.
 - `tools/book.py plan.json` books on PFM, can replace a booked clip, and logs ids. The docstring has the plan format.
 - Keep a `used_slugs.txt` so a clip is never posted twice.
