@@ -11,7 +11,7 @@ for l in logins:   # ONE login per query (alias limit + GQL service errors)
     try: u=requests.post('https://gql.twitch.tv/gql',headers={'Client-Id':CID},json={'query':q},timeout=15).json()['data']['user']
     except Exception as e: print(l,'error',e); continue
     if not u: continue
-    for e in u['clips']['edges']:
+    for e in ((u.get('clips') or {}).get('edges') or []):
         n=e['node']
         if (n['game'] or {}).get('name')!='Grand Theft Auto VI' or n['slug'] in used or n['createdAt']<since: continue
         print(n['viewCount'],n['durationSeconds'],l,n['createdAt'][5:16],n['slug'],n['title'][:70])
